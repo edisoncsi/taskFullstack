@@ -68,4 +68,4 @@ Task management
 
 # Result 
 
-![Diagram](./backendDevTest/assets/frontTask.jpg "Result")
+![Diagram](./frontTask.jpg "Result")
