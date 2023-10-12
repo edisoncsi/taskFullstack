@@ -1,0 +1,181 @@
+/* Estilos comunes para todos los tamaños de pantalla */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --rojo: #ba181b;
+    --azul: #00b4d8;
+    --azul-hover: #48cae4;
+    --rojo-hover: #e5383b;
+    --verde: #09a129;
+}
+
+body {
+    font-family: Poppins;
+    max-width: 100%; /* Hacer que el contenido ocupe el 100% del ancho en dispositivos móviles */
+    margin: 10px; /* Añadir un pequeño margen para mayor legibilidad */
+    padding: 10px; /* Añadir un pequeño espacio de relleno */
+}
+
+.card-to-do {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    padding: 15px; /* Reducir el relleno para adaptarse a pantallas más pequeñas */
+    border-radius: 10px; /* Reducir la curvatura del borde */
+    width: 100%; /* Hacer que el ancho sea del 100% en dispositivos móviles */
+}
+
+h1 {
+    text-align: center;
+}
+
+.counter-todos {
+    margin: 10px 0; /* Reducir el margen en dispositivos móviles */
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
+}
+
+counter-todos h3 {
+    font-weight: 500;
+    text-align: center; /* Centrar el texto */
+}
+
+.counter-todos span {
+	color: #f29559;
+	font-weight: 700;
+	font-size: 24px;
+	margin-left: 10px;
+}
+
+ul {
+    margin-top: 20px; /* Añadir más espacio en la parte superior en dispositivos móviles */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reducir el espacio entre elementos */
+}
+
+ul li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; /* Reducir el espacio entre elementos */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
+}
+
+ul li span {
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+ul li form {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-update {
+    border: none;
+    font-weight: 500;
+    font-family: inherit;
+    font-size: 16px; /* Reducir el tamaño de fuente para una mejor legibilidad en dispositivos móviles */
+    color: #555;
+    width: 100%;
+    outline: none;
+}
+
+.container-done {
+    background-color: white;
+    width: 20px; /* Reducir el tamaño del contenedor de marca de verificación */
+    height: 20px; /* Reducir el tamaño del contenedor de marca de verificación */
+    border-radius: 10px; /* Reducir la curvatura del borde */
+    border: 2px solid var(--verde);
+    cursor: pointer;
+}
+
+.container-done.active {
+    background-color: var(--verde);
+}
+
+.text-decoration-dashed {
+    text-decoration: line-through;
+}
+
+.btn-delete {
+    background-color: var(--rojo);
+    color: #fff;
+    padding: 10px; /* Reducir el tamaño del botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-delete:hover {
+    background-color: var(--rojo-hover);
+}
+
+.btn-edit {
+    background-color: var(--azul);
+    color: #fff;
+    padding: 10px; /* Reducir el tamaño del botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-edit:hover {
+    background-color: var(--azul-hover);
+}
+
+form {
+    display: flex;
+    gap: 10px; /* Reducir el espacio entre elementos */
+}
+
+.add-todo h3 {
+    text-align: center;
+    margin-bottom: 20px; /* Añadir más espacio en la parte inferior en dispositivos móviles */
+    font-size: 18px; /* Reducir el tamaño de fuente para una mejor legibilidad en dispositivos móviles */
+}
+
+.input-add {
+    border: none;
+    outline: none;
+    padding: 5px 10px; /* Reducir el tamaño del área de entrada de texto */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 10px; /* Reducir la curvatura del borde */
+    flex: 1;
+    font-family: inherit;
+    font-size: 14px; /* Reducir el tamaño de fuente para una mejor legibilidad en dispositivos móviles */
+    color: #555;
+}
+
+.btn-add {
+    border: none;
+    background-color: var(--azul);
+    color: #fff;
+    padding: 5px 20px; /* Reducir el tamaño del botón */
+    border-radius: 10px; /* Reducir la curvatura del borde */
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 14px; /* Reducir el tamaño de fuente para una mejor legibilidad en dispositivos móviles */
+}
+
+.btn-add:hover {
+    background-color: var(--azul-hover);
+}
