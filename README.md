@@ -14,6 +14,10 @@ Task management
   3. In a terminal and inside the folder we write: vscode .
   4. Open the project into Vscode
 
+## Run Project
+  1. Firts run McsvTasksApplication the backend project.
+  2. Second in a terminal execute "npm install" then "npm start" and the run this frontend project.
+
 ## Test API in Postman
 
 ### GET  
@@ -52,4 +56,16 @@ Task management
 
 ### localhost:8080/swagger-ui/index.html 
 
+# FRONT USER MANUAL
 
+  1 To create a task you only have to enter the text and then with Enter or the Add Button it is added.
+  
+  2 To edit we click on the Edit button and the box is enabled, we save with Enter
+  
+  3 To delete we click on the red button
+  
+  4 To update a task we click on the radiobutton and the status is updated.
+
+# Result 
+
+![Diagram](./backendDevTest/assets/frontTask.jpg "Result")
