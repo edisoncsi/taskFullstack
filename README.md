@@ -52,11 +52,4 @@ Task management
 
 ### localhost:8080/swagger-ui/index.html 
 
-​/api/listProducts
-
-    {
-       "brand_id": 1,
-       "product_id": 35455,
-       "start_date": "2020-06-15 00:00:00"
-    }
 
