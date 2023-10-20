@@ -1,11 +1,10 @@
-import { useEffect, useReducer, useState } from 'react';
-import { todoReducer } from '../todoreducer';
+import { useReducer } from 'react';
+import { todoReducer } from '../reducers/todoreducer';
 import axios from 'axios';
 
 export const useTodo = () => {
 
 	const initialState = [];
-
 
 	const [todos, dispatch] = useReducer(
 		todoReducer,
@@ -23,16 +22,14 @@ export const useTodo = () => {
 		};
 
 		axios.post("http://localhost:8080/api", {
-			id:todo.id,
+			id: todo.id,
 			description: todo.description,
 			done: false,
 		})
 			.then((response) => {
 				console.log(response);
 			});
-
 			
-
 		dispatch(action);
 	};
 
@@ -46,7 +43,6 @@ export const useTodo = () => {
 			.then((response) => {
 				console.log(response);
 			});
-
 
 		dispatch(action);
 	};
@@ -75,7 +71,7 @@ export const useTodo = () => {
 			},
 		};
 
-		const task = {id:id,  description: description, done: done };
+		const task = { id: id, description: description, done: done };
 
 		axios.put("http://localhost:8080/api/" + id, task)
 			.then((response) => {

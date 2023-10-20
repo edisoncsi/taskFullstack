@@ -10,7 +10,6 @@ export const TodoItem = ({
 	handleCompleteTodo,
 }) => {
 
-	
 	return (
 		<li>
 			<span onClick={() => handleCompleteTodo(todo.id)}>
