@@ -1,5 +1,6 @@
 package eco.com.spring.mcsv.tasks.controllers;
 
+import eco.com.spring.mcsv.tasks.dtos.TaskDto;
 import eco.com.spring.mcsv.tasks.models.Task;
 import eco.com.spring.mcsv.tasks.responses.BaseResponse;
 import eco.com.spring.mcsv.tasks.services.TaskService;
@@ -24,7 +25,7 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin("*")
+@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:9000"})
 public class TaskController {
 
     private final Logger logger = Logger.getLogger(TaskController.class.getName());
@@ -34,18 +35,21 @@ public class TaskController {
 
     @GetMapping
     public ResponseEntity<?> list() {
-       // System.out.println(taskService.getByStatus());
         return ResponseEntity.ok(taskService.list());
     }
 
     @PostMapping
-    public ResponseEntity<?> createTask(@Valid @RequestBody Task command, BindingResult result) {
+    public ResponseEntity<?> createTask(@Valid @RequestBody TaskDto command, BindingResult result) {
         if (result.hasErrors()) {
             return ResponseEntity.badRequest().body(validationErrors(result));
         }
 
         try {
-            taskService.insert(command);
+            Task task = new Task();
+            task.setId(command.getId());
+            task.setDescription(command.getDescription());
+            task.setDone(command.getDone());
+            taskService.insert(task);
             return new ResponseEntity<>(new BaseResponse("La tarea se ha creado exitosamente"), HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             return handleBadRequest(e);
@@ -107,12 +111,12 @@ public class TaskController {
     }
 
     private ResponseEntity<?> handleBadRequest(Exception e) {
-        logger.log(Level.WARNING, "Bad request: " + e.getMessage());
+        logger.log(Level.WARNING,  String.format("Bad request: %s " , e.getMessage()));
         return ResponseEntity.badRequest().body(new BaseResponse(e.getMessage()));
     }
 
     private ResponseEntity<?> handleInternalError(Exception e) {
-        logger.log(Level.SEVERE, "Internal server error: " + e.getMessage(), e);
+        logger.log(Level.SEVERE, String.format("Internal server error:  %s",  e.getMessage()), e);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new BaseResponse("Internal server error"));
     }
 

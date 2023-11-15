@@ -1,6 +1,7 @@
 package eco.com.spring.mcsv.tasks.controllers;
 
 
+import eco.com.spring.mcsv.tasks.dtos.TaskDto;
 import eco.com.spring.mcsv.tasks.models.Task;
 import eco.com.spring.mcsv.tasks.services.TaskService;
 import org.junit.jupiter.api.Assertions;
@@ -44,9 +45,14 @@ class TaskControllerTest {
     @Test
     public void testCreateTaskValidInput() {
     // Create a sample Task
-    Task sampleTask = new Task();
+    TaskDto sampleTask = new TaskDto();
+        sampleTask.setId(22222);
         sampleTask.setDone(false);
         sampleTask.setDescription("Sample description");
+    Task task = new Task();
+    task.setId(sampleTask.getId());
+    task.setDone(sampleTask.getDone());
+    task.setDescription(sampleTask.getDescription());
 
     // Create a mock BindingResult without errors
     BindingResult mockBindingResult = mock(BindingResult.class);
@@ -59,20 +65,21 @@ class TaskControllerTest {
     Assertions.assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
 
     // Verify that the taskService.insert method was called once
-    verify(taskService, times(1)).insert(sampleTask);
+    verify(taskService, times(1)).insert(refEq(task) );
     }
 
     @Test
     public void testCreateTaskInvalidInput() {
         // Create a sample Task
         Task invalidTask = new Task();
+        TaskDto sampleTask = new TaskDto();
 
         // Create a mock BindingResult with errors
         BindingResult mockBindingResult = mock(BindingResult.class);
         when(mockBindingResult.hasErrors()).thenReturn(true);
 
         // Call the createTask method with invalid input
-        ResponseEntity<?> responseEntity = taskController.createTask(invalidTask, mockBindingResult);
+        ResponseEntity<?> responseEntity = taskController.createTask(sampleTask, mockBindingResult);
 
         // Verify that the response has a 400 Bad Request status
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
